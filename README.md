@@ -1,5 +1,4 @@
-# Official Vue.js Documentation
-Follow along with the [official documentation for Vue.js](https://vuejs.org/v2/guide/)
+# Vue.js Practies
+This contains vuejs practice and J1 problem from Canadian Computing Competition https://cemc.uwaterloo.ca/contests/computing/past_ccc_contests/2006/stage1/juniorEn.pdf
 
-## Asynchronous Activities
-Asynchronous activities mean you can complete them at your own pace.
+
