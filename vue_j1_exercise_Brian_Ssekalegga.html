@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="">
+	<head>
+
+		<title>J1 Canadian Calorie Counting)</title>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.formfield{margin-bottom:10px;}
+
+		</style>
+	</head>
+	<body>
+	<!-- Navigation  -->
+	<div class="w3-top w3-bar w3-black">
+		<a href="/" class="w3-bar-item w3-button">Fast Foods</a>
+		<div>
+			<a href="/" class="w3-bar-item w3-button">Home</a>
+		</div>
+	</div>
+	<!-- End of Navigation-->
+
+	<!-- main  section -->
+	<main class="w3-container">
+
+		<div id="app" class="w3-display-middle">
+			<h2>Welcome to My Fast Food Emporium</h2>
+			<div class="w3-card-4">
+				<div class="w3-container w3-black">
+					<h2>Calories Calculator</h2>
+				</div>
+				<!-- form section -->
+				<form class="w3-container">
+					<div class="w3-margin-top formfield">
+						<label for="burger">Select Burger: </label>
+						<select class="w3-select"name="burger" id="burger" v-model="form.burger_calories">
+							<option v-for="burger in burgers" v-bind:value="burger.calories">{{ burger.name}}</option>
+						</select>
+					</div>
+					<div class="w3-margin-top formfield">
+						<label for="side-order">Select Side Order: </label>
+						<select class="w3-select"name="side-order" id="side-order" v-model="form.side_order_calories">
+							<option v-for="side in side_orders" v-bind:value="side.calories">{{ side.name}}</option>
+						</select>
+					</div>
+					<div class="w3-margin-top formfield">
+						<label for="soft-drink">Select Soft drink: </label>
+						<select class="w3-select"name="soft-drink" id="soft-drink" v-model="form.soft_drink_calories">
+							<option v-for="drink in soft_drinks" v-bind:value="drink.calories">{{ drink.name}}</option>
+						</select>
+					</div>
+					<div class="w3-margin-top formfield">
+				<label for="dessert">Select Dessert: </label>
+				<select class="w3-select" name="dessert" id="dessert" v-model="form.dessert_calories">
+					<option v-for="dessert in desserts" v-bind:value="dessert.calories">{{ dessert.name}}</option>
+				</select>
+			</div>
+				</form>
+				<!-- end of form section -->
+
+				<!-- results section -->
+				<div id="result" class="w3-margin-left">
+					<h3>Your total Calorie count is : {{ total_calories}}</h3>
+				</div>
+				<!-- end of results section -->
+			</div>
+			<p>Problem J1: The New CCC (Canadian Calorie Counting). <a href="https://cemc.uwaterloo.ca/contests/computing/past_ccc_contests/2006/stage1/juniorEn.pdf" target="_blank">from the J1 problem hosted by the CCC.</a></p>
+
+		</div>
+	</main>
+	<!-- end of main section -->
+
+
+	<script>
+	var app = new Vue({
+		el: '#app',
+		data:{
+			burgers:[
+				{ id : 1 , name:'Cheeseburger (461 Calories)', calories:461 },
+				{ id : 2 , name:'Fish Burger (431 Calories)', calories:431 },
+				{ id : 3 , name:'Veggie Burger (420 Calories)', calories:420 },
+				{ id : 4 , name:'no burger', calories:0 },
+			],
+			side_orders:[
+				{ id : 1 , name:'Fries (100 Calories)', calories:100 },
+				{ id : 2 , name:'Baked Potato (57 Calories)', calories:57 },
+				{ id : 3 , name:'Chef Salad (70 Calories)', calories:70 },
+				{ id : 4 , name:'no side order', calories:0 },
+
+			],
+			soft_drinks:[
+				{ id : 1 , name:'Soft Drink (130 Calories)', calories:130 },
+				{ id : 2 , name:'Orange Juice (160 Calories)', calories:160 },
+				{ id : 3 , name:'Milk (118 Calories)', calories:118 },
+				{ id : 4 , name:'no drink', calories:0 },
+			],
+			desserts:[
+				{ id : 1 , name:'Apple Pie (167 Calories)', calories:167 },
+				{ id : 2 , name:'Sundae (266 Calories)', calories:266 },
+				{ id : 3 , name:'Fruit Cup (75 Calories)', calories:75 },
+				{ id : 4 , name:'no dessert', calories:0 },
+			],
+
+			form:{
+				burger_calories:'',
+				side_order_calories:'',
+				soft_drink_calories:'',
+				dessert_calories:'',
+				total_calories:0
+			}
+		},
+		computed:{
+			/**
+			 * function that calculates the total calories
+			 */
+			total_calories:function(){
+				let form = this.form;
+				return (parseInt(form.burger_calories) + parseInt(form.soft_drink_calories) + parseInt(form.side_order_calories) + parseInt(form.dessert_calories) || 0 );
+			},
+		}
+	});
+
+	</script>
+
+	</body>
+</html>
